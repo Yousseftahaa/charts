@@ -25,9 +25,9 @@ appendonly: "no"
 
 annotations: {}
 
-configExtraArgs: []
- - flash-enabled "yes"
- - flash-path "/data/flash"
+configExtraArgs:
+  - ["flash-enabled","yes"]
+  - ["flash-path","/data/flash"]
   # - somesimple: "argument"
   # - client-output-buffer-limit: ["normal", "0", "0", "0"]
   # - client-output-buffer-limit: ["replica", "268435456", "67108864", "60"]
