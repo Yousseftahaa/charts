@@ -25,7 +25,13 @@ appendonly: "no"
 
 annotations: {}
 
-configExtraArgs: []
+configExtraArgs:
+  - storage-provider flash /data/flash
+
+persistence:
+  enabled: true
+  mountPath: /data/flash
+  size: 20Gi
   # - somesimple: "argument"
   # - client-output-buffer-limit: ["normal", "0", "0", "0"]
   # - client-output-buffer-limit: ["replica", "268435456", "67108864", "60"]
