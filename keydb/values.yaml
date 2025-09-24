@@ -26,7 +26,8 @@ appendonly: "no"
 annotations: {}
 
 configExtraArgs:
-  - storage-provider: flash /data/flash
+  - flash-enabled: yes
+  - flash-path: /data/flash
   # - somesimple: "argument"
   # - client-output-buffer-limit: ["normal", "0", "0", "0"]
   # - client-output-buffer-limit: ["replica", "268435456", "67108864", "60"]
@@ -34,15 +35,13 @@ configExtraArgs:
 
 podAnnotations: {}
 
-tolerations:
-  {}
+tolerations: {}
   # - effect: NoSchedule
   #   key: key
   #   operator: Equal
   #   value: value
 
-nodeSelector:
-  {}
+nodeSelector: {}
   # topology.kubernetes.io/region: some-region
 
 topologySpreadConstraints: []
@@ -57,22 +56,21 @@ topologySpreadConstraints: []
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                  - '{{ include "keydb.name" . }}'
-              - key: app.kubernetes.io/instance
-                operator: In
-                values:
-                  - "{{ .Release.Name }}"
-          topologyKey: "kubernetes.io/hostname"
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - '{{ include "keydb.name" . }}'
+          - key: app.kubernetes.io/instance
+            operator: In
+            values:
+            - '{{ .Release.Name }}'
+        topologyKey: "kubernetes.io/hostname"
 
-additionalAffinities:
-  {}
+additionalAffinities: {}
 
 podDisruptionBudget:
   enabled: true
@@ -126,8 +124,10 @@ readinessProbe:
   successThreshold: 1
   failureThreshold: 5
 
+# Random UUID for readiness GET probe
 readinessProbeRandomUuid: "90f717dd-0e68-43b8-9363-fddaad00d6c9"
 
+# Startup Probe
 startupProbe:
   enabled: true
   custom: {}
@@ -135,8 +135,8 @@ startupProbe:
   timeoutSeconds: 1
   failureThreshold: 24
 
-lifecycle:
-  {}
+# Lifecycle Hooks
+lifecycle: {}
 
 persistentVolume:
   enabled: true
