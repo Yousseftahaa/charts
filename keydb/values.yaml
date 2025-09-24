@@ -25,7 +25,7 @@ appendonly: "no"
 
 annotations: {}
 
-configExtraArgs: 
+configExtraArgs: []
  - flash-enabled "yes"
  - flash-path "/data/flash"
   # - somesimple: "argument"
