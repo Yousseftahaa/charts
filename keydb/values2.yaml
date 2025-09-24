@@ -1,0 +1,15 @@
+# Custom values for Flash-enabled KeyDB
+nodes: 3
+persistentVolume:
+  enabled: true
+  size: 10Gi  # Increase size for Flash storage
+  storageClass: "fast-ssd"  # Use appropriate storage class
+
+configExtraArgs:
+  - storage-provider: "flash"
+  - flash-dir: "/data/flash"
+  - flash-ram-percent: "10"
+  - flash-async: "yes"
+  # Additional Flash tuning
+  - flash-evict-tenths: "200"
+  - flash-write-buffer-size: "4194304"
