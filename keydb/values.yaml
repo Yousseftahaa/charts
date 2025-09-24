@@ -54,7 +54,15 @@ additionalAffinities: {}
 podDisruptionBudget:
   enabled: true
   maxUnavailable: 1
-extraInitContainers: []
+extraInitContainers:
+  - name: wipe-old-flash
+    image: busybox:1.36
+    command: ["sh","-c"]
+    args:
+      - 'echo "Wiping /data/flash/* if exists"; rm -rf /data/flash/* || true'
+    volumeMounts:
+      - name: data
+        mountPath: /data/flash
 extraContainers: []
 extraVolumes: []
 livenessProbe:
