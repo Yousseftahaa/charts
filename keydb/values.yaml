@@ -21,10 +21,8 @@ annotations: {}
 configExtraArgs:
 - storage-provider:
   - flash
-  - /data/flash
+  
 - enable-async-commands:
-  - 'yes'
-- soft-shutdown:
   - 'yes'
 persistence:
   enabled: true
