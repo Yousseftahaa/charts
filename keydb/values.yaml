@@ -26,12 +26,13 @@ appendonly: "no"
 annotations: {}
 
 configExtraArgs:
-  - flash-enabled "yes"
-  - flash-path "/data/flash"
+  - flash-enabled: "yes"
+  - flash-path: "/data/flash"
   # - somesimple: "argument"
   # - client-output-buffer-limit: ["normal", "0", "0", "0"]
   # - client-output-buffer-limit: ["replica", "268435456", "67108864", "60"]
   # - client-output-buffer-limit: ["pubsub", "33554432", "8388608", "60"]
+
 
 podAnnotations: {}
 
