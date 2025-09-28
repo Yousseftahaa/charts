@@ -58,6 +58,6 @@ spec:
   ports:
     - name: http
       port: 7379
-      targetPort: 7379
+      targetPort: 7378
       protocol: TCP
   type: ClusterIP
