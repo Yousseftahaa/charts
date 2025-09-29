@@ -58,11 +58,11 @@ spec:
     spec:
       nodeSelector:
          cloud.google.com/gke-nodepool: "app-nodes"
-      tolerations:
-      - key: "persist-dbs"
-        operator: "Equal"
-        value: "true"
-        effect: "NoExecute"
+     # tolerations:
+     # - key: "persist-dbs"
+      #  operator: "Equal"
+       # value: "true"
+        #effect: "NoExecute"
       volumes:
       - name: config
         configMap:
