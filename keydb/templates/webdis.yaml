@@ -42,7 +42,7 @@ metadata:
     name: webdis
   annotations:
     argocd.argoproj.io/sync-wave: "3"
-    argocd.argoproj.io/sync-options: Replace=true   # مهم علشان مشكلة immutable selector
+    argocd.argoproj.io/sync-options: Replace=true   
 spec:
   replicas: 2
   selector:
