@@ -57,7 +57,7 @@ spec:
         name: webdis
     spec:
       nodeSelector:
-         cloud.google.com/gke-nodepool: "db-nodes"
+         cloud.google.com/gke-nodepool: "app-nodes"
       tolerations:
       - key: "persist-dbs"
         operator: "Equal"
