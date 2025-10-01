@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-le-prod-keydb-test
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory 
+    privateKeySecretRef:
+      name: le-prod-keydb-test
+    solvers:
+    - http01:
+       ingress:
+         podTemplate:
+             spec:
+              nodeSelector:
+                beta.kubernetes.io/os: linux
+         class: nginx
