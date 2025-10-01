@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+
+  annotations:
+   kubernetes.io/ingress.class: nginx
+   nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+   nginx.ingress.kubernetes.io/proxy-body-size: "16m"
+   nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+   nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+   nginx.ingress.kubernetes.io/client-max-body-siz: 16m
+   nginx.ingress.kubernetes.io/ssl-passthrough: 'false'
+   nginx.ingress.kubernetes.io/auth-url: "https://robodev.themis.io/svc/api/oauth/validate?aud=https://redis-ha-gcp.robodesk.ai/webdis"
+   argocd.argoproj.io/sync-wave: "4"
+  name: ingress-tls-keydb-test-webdis  
+spec:
+  tls:
+  - hosts:
+    - keydb-test.robodesk.ai
+    secretName: secret-le-prod-keydb-test
+    
+  rules:
+  - host: keydb-test.robodesk.ai
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+           name: webdissvc-test  
+           port: 6380
+            number: 6380
