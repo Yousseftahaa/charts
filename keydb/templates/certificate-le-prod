@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: le-prod-crt-keydb-test
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+
+spec:
+  secretName: secret-le-prod-keydb-test
+  issuerRef:
+    kind: Issuer
+    name: letsencrypt-le-prod-keydb-test
+  commonName: keydb-test.robodesk.ai
+  dnsNames:
+  - keydb-test.robodesk.ai
